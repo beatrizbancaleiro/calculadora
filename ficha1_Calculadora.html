@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora cientifica</title>
+    <style>
+        body{
+                background-color: #6d597a;
+        }
+        table {
+            background:  #B56576;
+            padding: 7px 5px;
+            border: 2px solid #00000000;
+            text-align: center;
+            padding-bottom: 5px;
+            margin-top: 90px;
+        }  
+        td{
+            width: 100px;
+            height: 90px;
+            
+        }
+        button {
+            padding: 10px 20px;
+            width: 100%;
+            height: 90px;
+            
+            font-size: 26px;
+            font-weight: bold;
+            font-family: cursive;
+            background: #355070;
+            border: none;
+            color: #EAAC8B;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 600px;
+            height: 81px;
+            border: 1px solid #E56B6F;
+            padding: 10px 20px;
+            font-size: 29px;
+            background: #E56B6F;
+            font-weight: bold;
+            font-family: cursive;
+            
+            color: #dedede;
+            border-bottom: 2px solid #355070;
+        }
+    </style>
+</head>
+<body>
+    <table align="center">
+        
+        <tr> 
+            <td colspan="6">
+                <form name="calc">
+                    <input type="text" name="text" id="screen" readonly>
+                </form>
+            </td>
+             
+        </tr>
+        
+        <tr>
+            <td colspan="2" align="center"><button onclick="document.calc.text.value=''" class="reset clear">Del</button></td>
+            <td align="center"><button class="limpar" value="Del" onclick="limpar();">C</button></td>
+            
+            <td align="center"><button id="operador_divisão" value="&divide;"  onclick="divisão();"> &divide; </button></td>
+            <td align="center"><button id="operador_seno" value="sin"  onclick="seno();"> sin </button></td>
+            <td align="center"><button  id="operador_tangete" value="tan" onclick="tangente();"> tan </button></td>
+            
+        </tr>
+
+        <tr>
+            
+            <td align="center"><button onclick="document.calc.text.value+='7'">7</button></td>
+            <td align="center"><button onclick="document.calc.text.value+='8'">8</button></td>
+            <td align="center"><button onclick="document.calc.text.value+='9'">9</button></td>
+            <td align="center"><button id="operador_multiplicação" value="*"  onclick="multiplicação();"> * </button></td>
+            <td align="center"><button id="operador_seno-1" value="sin^-1" onclick="seno1();"> sin<sup>-1 </button></td>
+            <td align="center"><button  id="operador_tangete-1" value="tan^-1" onclick="tangente1();"> tan<sup>-1 </button></td>
+        </tr>
+        <tr>
+            <td align="center"><button onclick="document.calc.text.value+='4'">4</button></td>
+		    <td align="center"><button onclick="document.calc.text.value+='5'">5</button></td>
+		    <td align="center"><button onclick="document.calc.text.value+='6'">6</button></td>
+            <td align="center"><button  id="operador_subtração" value="-"  onclick="subtração();"> - </button></td>
+            <td align="center"><button  id="operador_cosseno" value="cos"  onclick="cosseno();"> cos </button></td>
+            <td align="center"><button  id="operador_raiz" value="sqrt2"  onclick="raiz();"> &radic;x </button></td>   
+        </tr>
+
+        <tr>
+            <td align="center"><button onclick="document.calc.text.value+='1'">1</button></td>
+		    <td align="center"><button onclick="document.calc.text.value+='2'">2</button></td>
+		    <td align="center"><button onclick="document.calc.text.value+='3'">3</button></td>
+            <td align="center"><button  id="operador_soma" value="+" onclick="soma();"> + </button></td>
+            <td align="center"><button  id="operador_cosseno-1" value="cos^-1"  onclick="cosseno1();"> cos<sup>-1 </button></td>    
+            <td align="center"><button  id="operador_expoente" value="expoente" onclick="expoente();"> x <sup>y </button></td> 
+        </tr>
+
+        <tr>
+            <td align="center"><button onclick="document.calc.text.value+='.'">.</button></td>
+		    <td align="center"><button onclick="document.calc.text.value+='0'">0</button></td>
+		    <td colspan="2" align="center"><button onclick="document.calc.text.value=eval(document.calc.text.value)" class="reset equal">=</button></td>         
+            <td align="center"><button value="log" onclick="logaritmo();"> log(x) </button></td>
+            <td align="center"><button value="x!"  onclick="fatorial(document.calc.text.value);"> x! </button></td>
+        </tr>
+
+
+    </table>
+    
+    <script>
+         function limpar(){
+            var x= document.getElementById('screen').value;
+			document.getElementById('screen').value=x.substr(0,x.length-1);
+            };
+       
+
+       function igual(){
+           visor= document.write(n3);
+       }
+
+        function soma()
+        {
+            document.calc.text.value+='+';	
+        };
+         
+        function subtração()
+        {
+            document.calc.text.value+='-';	
+        };
+    
+        function multiplicação()
+        {
+            document.calc.text.value+='*';	
+        };
+    
+        function divisão()
+        {
+            document.calc.text.value+='/';	
+        };
+        
+        function expoente()
+        {
+            document.calc.text.value+='**';	
+        }
+        function raiz()
+        {
+            document.calc.text.value=Math.sqrt(document.calc.text.value,1/2);
+        };
+
+        function seno()
+        {
+            document.calc.text.value=Math.sin(document.calc.text.value*Math.PI/180);
+        };
+      
+        function seno1()
+        {
+            document.calc.text.value=Math.asin(document.calc.text.value)*180/Math.PI;
+        };
+        function cosseno()
+        {
+            document.calc.text.value=Math.cos(document.calc.text.value*Math.PI/180);
+        };
+        function cosseno1()
+        {
+            document.calc.text.value = Math.acos(document.calc.text.value)*180/Math.PI;
+        };
+
+        function tangente()
+        {
+            document.calc.text.value=Math.tan(document.calc.text.value*Math.PI/180);
+        };
+        function tangente1()
+        {
+            document.calc.text.value=Math.atan(document.calc.text.value)*180/Math.PI;
+        };
+        
+        function fatorial(n){
+            var resultado = n;
+            if (n === 0 || n === 1) 
+                return 1; 
+            while (n > 1) { 
+                n--;
+            resultado *= n;
+            }
+            document.calc.text.value= resultado;
+        }
+        function logaritmo(){
+            document.calc.text.value=Math.log10(document.calc.text.value);
+        };
+    </script>
+
+</body>
+</html>
